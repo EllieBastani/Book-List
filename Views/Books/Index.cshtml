@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Assignment1.Models.Book>
+
+@{
+    ViewData["Title"] = "Harry Potter Book Titles";
+}
+
+<h2>@ViewData["Title"]</h2>
+<br />
+<br />
+
+<table >
+    @*<thead>
+
+            <tr>
+                    <th>
+                    @Html.DisplayNameFor(model => model.VolumeInfo.Title)
+                </th>
+                    <th></th>
+                </tr>
+        </thead>*@
+    <tbody class="table">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        @Html.DisplayFor(modelItem => item.VolumeInfo.Title)
+                    </a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

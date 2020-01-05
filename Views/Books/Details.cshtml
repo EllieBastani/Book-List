@@ -1,0 +1,94 @@
+﻿@model Assignment1.Models.Book
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+@*<h2>@Model.VolumeInfo.Title</h2>*@
+
+<div>
+    <hr />
+    @*<dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.VolumeInfo.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.VolumeInfo.Title)
+        </dd>
+    </dl>*@
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>
+                <img src=@Html.DisplayFor(model => model.VolumeInfo.ThumbnailURL.SmallThumbnail) alt="Sample Photo" />
+            </td>
+            <th></th>
+            <td>
+                <h3>
+                    @Html.DisplayFor(model => model.VolumeInfo.Title)
+                </h3>
+            </td>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VolumeInfo.Description)
+            </th>
+            <th></th>
+            <td>
+                @Html.DisplayFor(model => model.VolumeInfo.Description)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VolumeInfo.Authors)
+            </th>
+            <th></th>
+            <td>
+                @foreach (var item in @Model.VolumeInfo.Authors)
+                {
+                    @Html.DisplayFor(modelItem => item)
+                    <br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VolumeInfo.Publisher)
+            </th>
+            <th></th>
+            <td>
+                @Html.DisplayFor(model => model.VolumeInfo.Publisher)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VolumeInfo.PublishDate)
+            </th>
+            <th></th>
+            <td>
+                @Html.DisplayFor(model => model.VolumeInfo.PublishDate)
+            </td>
+        </tr>
+        <tr>
+            @foreach (var item in Model.VolumeInfo.IndustryIds)
+            {
+                @if (item.Type == "ISBN_10")
+                {
+                    <th>
+                        @Html.DisplayFor(model => item.Type)
+                    </th>
+                    <th></th>
+                    <td>
+                        @Html.DisplayFor(model => item.Identifier)
+                    </td>
+                }
+            }
+        </tr>
+    </tbody>
+</table>
+
+</div>
